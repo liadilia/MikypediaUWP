@@ -123,6 +123,9 @@
     <Compile Include="DbConnectForm.xaml.cs">
       <DependentUpon>DbConnectForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MikyPediaSQLClient.xaml.cs">
+      <DependentUpon>MikyPediaSQLClient.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

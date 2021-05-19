@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="MikypediaUWP.MainPage1"
+    x:Class="MikypediaUWP.MikyPediaSQLClient"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MikypediaUWP"
@@ -9,6 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <TextBox HorizontalAlignment="Left" Name="DBUrl" Margin="82,87,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="329"/>
+        <Button Content="Button" Margin="166,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.452,-1.297" Width="168" Click="Button_Click_1"/>
+        <TextBox HorizontalAlignment="Left" Name="Query" Margin="476,60,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="294" Width="880"/>
+        <Button Content="Button" Margin="885,403,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Name="DBName" Margin="82,175,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="329"/>
+        <GridView Name="tables" Margin="52,352,1062,38"/>
+        <GridView Name="resultGrid" Margin="476,476,144,100"/>
+        <TextBox HorizontalAlignment="Left" Name="logText" Margin="506,931,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="59" Width="850"/>
 
     </Grid>
 </Page>
