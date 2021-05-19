@@ -59,10 +59,10 @@ namespace MikypediaUWP
                     .setPassword(password.Text)
                     .build();
 
-
-                this.Hide();
+                
+               /* 
                 Editor = new MikyPediaSQLClient(dbConn);
-                Editor.Show();
+                Editor.Show();*/
             }
             catch (Exception exception)
             {
@@ -70,6 +70,29 @@ namespace MikypediaUWP
                 
             }
         }
+
+        private void HandleCheck(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if (cb.Name == "WAuth")
+            {
+                DBType.Text = "MSSQL";
+                username.IsEnabled = false;
+                password.IsEnabled = false;
+            }
+        }
+
+        private void HandleUnchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if (cb.Name == "WAuth")
+            {
+                DBType.Text = "MySQL";
+                username.IsEnabled = true;
+                password.IsEnabled = true;
+            }
+        }
+
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
