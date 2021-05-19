@@ -9,6 +9,20 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <Button Content="Connect" Margin="637,734,0,0" VerticalAlignment="Top" Height="36" Width="325" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Margin="446,336,0,0" Name="host" Text="host" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="638"/>
+        <TextBox HorizontalAlignment="Left" Margin="448,390,0,0" Name="name" Text="name" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.504,-4.507" Height="37" Width="637"/>
+        <ComboBox Margin="543,90,0,0" Width="407" Height="45"/>
+        <TextBox HorizontalAlignment="Left" Margin="446,560,0,0" Name="username" Text="Username" TextWrapping="Wrap" VerticalAlignment="Top" Width="269"/>
+        <TextBox HorizontalAlignment="Left" Margin="448,615,0,0" Name="password" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top" Width="268"/>
+        <TextBlock HorizontalAlignment="Left" Margin="339,339,0,0" Text="Hostname" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.492,3.332"/>
+        <TextBlock HorizontalAlignment="Left" Margin="339,399,0,0" Text="DB name" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="736,464,0,0" Text="Authentication" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.078,-0.621"/>
+        <TextBlock HorizontalAlignment="Left" Margin="781,581,0,0" Text="OR" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.183,-0.626" SelectionChanged="TextBlock_SelectionChanged"/>
+        <CheckBox Content="Windows Authentication" Name="WAuth" Margin="871,581,0,0" VerticalAlignment="Top"/>
+        <ComboBox Margin="446,285,0,0" Name="DBType" Width="638" SelectionChanged="ComboBox_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="338,290,0,0" Text="DB type" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="345,567,0,0" Text="Username" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="349,628,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top"/>
     </Grid>
 </Page>
