@@ -45,12 +45,14 @@ namespace MikypediaUWP
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+            
         {
+            Console.WriteLine("I was here");
             Enum.TryParse(DBType.Text, out DbTypes type);
 
             try
             {
-
+                Console.WriteLine("I was here");
                 DbConnection dbConn = new DatabaseConnectionBuilder()
                     .withType(type)
                     .setHost(host.Text)
@@ -58,8 +60,11 @@ namespace MikypediaUWP
                     .setUsername(username.Text)
                     .setPassword(password.Text)
                     .build();
-
-                
+                Console.WriteLine("I was here");
+                if (dbConn != null)
+                {
+                    var dialog = new MessageDialog("I am connected");
+                }
                /* 
                 Editor = new MikyPediaSQLClient(dbConn);
                 Editor.Show();*/

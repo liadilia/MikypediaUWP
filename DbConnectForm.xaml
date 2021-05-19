@@ -18,8 +18,11 @@
         <TextBlock HorizontalAlignment="Left" Margin="339,399,0,0" Text="DB name" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="736,464,0,0" Text="Authentication" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.078,-0.621"/>
         <TextBlock HorizontalAlignment="Left" Margin="781,581,0,0" Text="OR" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.183,-0.626" SelectionChanged="TextBlock_SelectionChanged"/>
-        <CheckBox Content="Windows Authentication" Name="WAuth" Margin="871,581,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <ComboBox Margin="446,285,0,0" Name="DBType" Width="638" SelectionChanged="ComboBox_SelectionChanged"/>
+        <CheckBox Content="Windows Authentication" Name="WAuth" Margin="871,581,0,0" VerticalAlignment="Top"/>
+        <ComboBox Margin="446,285,0,0" Name="DBType" Width="638" SelectionChanged="ComboBox_SelectionChanged">
+            <x:String>MySQL</x:String>
+            <x:String>MSSQL</x:String>
+        </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="338,290,0,0" Text="DB type" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="345,567,0,0" Text="Username" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="349,628,0,0" Text="Password" TextWrapping="Wrap" VerticalAlignment="Top"/>

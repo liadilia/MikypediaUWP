@@ -35,13 +35,16 @@ namespace MikypediaUWP
             this.DBUrl.Text = conn.DataSource;
             this.DBName.Text = conn.Database;
 
-            tables.Columns.Add("table", "Table");
+      
+
+
+        /*    tables.Columns.Add("table", "Table");
             DataTable schema = conn.GetSchema("Tables");
             foreach (DataRow row in schema.Rows)
             {
 
                 tables.Rows.Add(row[2].ToString());
-            }
+            }*/
         }
         private DataTable table;
         private DbDataAdapter adapter;
@@ -61,7 +64,7 @@ namespace MikypediaUWP
                 if (query.ToLower().StartsWith("select"))
                 {
                     // https://stackoverflow.com/questions/3488962/how-to-create-a-dbdataadapter-given-a-dbcommand-or-dbconnection
-                    adapter = DbProviderFactories.GetFactory(conn).CreateDataAdapter();
+               /*     adapter = DbProviderFactories.GetFactory(conn).CreateDataAdapter();
 
                     adapter.SelectCommand = cmd;
                     table = new DataTable();
@@ -70,7 +73,7 @@ namespace MikypediaUWP
                     BindingSource bSource = new BindingSource();
                     bSource.DataSource = table;
                     resultGrid.DataSource = bSource;
-                    affectedRows = table.Rows.Count;
+                    affectedRows = table.Rows.Count;*/
 
                 }
                 else
@@ -99,15 +102,15 @@ namespace MikypediaUWP
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.conn.Close();
-            this.Hide();
-            DBConnectForm connectionForm = new DBConnectForm();
-            connectionForm.Show();
+        /*    this.Hide();
+            DBConnectForm connectionForm = new DBConnectForm();*/
+         //   connectionForm.Show();
         }
 
-        private void tables_CellDoubleClick(object sender, GridViewCellEventArgs e)
+      /*  private void tables_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
             setResults(resultGrid, "SELECT * FROM " + ((GridView)sender).Rows[e.RowIndex].Cells[0].Value);
 
-        }
+        }*/
     }
 }
