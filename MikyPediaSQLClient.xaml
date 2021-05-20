@@ -11,12 +11,16 @@
     <Grid>
         <TextBox HorizontalAlignment="Left" Name="DBUrl" Margin="82,87,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="329"/>
         <Button Content="Button" Margin="166,259,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.452,-1.297" Width="168" Click="Button_Click_1"/>
-        <TextBox HorizontalAlignment="Left" Name="Query" Margin="476,60,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Height="294" Width="880"/>
-        <Button Content="Button" Margin="885,403,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <TextBox HorizontalAlignment="Left" Name="Query" Margin="476,60,0,0" Text="select * from users;" TextWrapping="Wrap" VerticalAlignment="Top" Height="232" Width="880"/>
+        <Button Content="Execute" Margin="885,403,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <TextBox HorizontalAlignment="Left" Name="DBName" Margin="82,175,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="329"/>
-        <GridView Name="tables" Margin="52,352,1062,38"/>
-        <GridView Name="resultGrid" Margin="476,476,144,100"/>
-        <TextBox HorizontalAlignment="Left" Name="logText" Margin="506,931,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="59" Width="850"/>
+        <GridView Name="tables" Margin="10,352,1062,115"/>
+        <GridView Name="resultGrid" Margin="476,476,10,142" BorderThickness="1,1,1,1" BorderBrush="Black">
+            <UIElement.RenderTransform>
+                <MatrixTransform/>
+            </UIElement.RenderTransform>
+        </GridView>
+        <TextBox Name="logText" Height="100" Text="" TextWrapping="Wrap" RenderTransformOrigin="0.5,0.487" Margin="10,890,-10,10"/>
 
     </Grid>
 </Page>

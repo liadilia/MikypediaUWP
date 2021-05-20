@@ -60,12 +60,17 @@ namespace MikypediaUWP
                     .setPassword(password.Text)
                     .build();
                 Console.WriteLine("I was here");
+                System.Diagnostics.Debug.WriteLine("I was here");
                 if (dbConn != null)
                 {
+                    System.Diagnostics.Debug.WriteLine("It worked");
                     var dialog = new MessageDialog("I am connected");
+                    
                 }
+
+                this.Frame.Navigate(typeof(MikyPediaSQLClient), dbConn);
                /* 
-                Editor = new MikyPediaSQLClient(dbConn);
+              Editor = new MikyPediaSQLClient(dbConn);
                 Editor.Show();*/
             }
             catch (Exception exception)
