@@ -45,14 +45,13 @@ namespace MikypediaUWP
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-            
         {
             Console.WriteLine("I was here");
-            Enum.TryParse(DBType.Text, out DbTypes type);
+
+            Enum.TryParse(DBType.SelectedValue.ToString(), out DbTypes type);
 
             try
             {
-                Console.WriteLine("I was here");
                 DbConnection dbConn = new DatabaseConnectionBuilder()
                     .withType(type)
                     .setHost(host.Text)
