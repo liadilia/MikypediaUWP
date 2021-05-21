@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.UI.Controls;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -15,6 +18,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,6 +35,9 @@ namespace MikypediaUWP
         public MikyPediaSQLClient()
         {
             this.InitializeComponent();
+
+
+
             //this.conn = conn;
             //this.DBUrl.Text = conn.DataSource;
             //this.DBName.Text = conn.Database;
@@ -58,7 +65,7 @@ namespace MikypediaUWP
 
         private DataTable table;
         private DbDataAdapter adapter;
-        private void setResults(GridView view, string query)
+        private void setResults(DataGrid view, string query)
         {
 
             query = query.Trim();
@@ -71,32 +78,30 @@ namespace MikypediaUWP
             try
             {
 
-                //resultGrid.ItemsSource
+               
 
                 int affectedRows = 0;
                 if (query.ToLower().StartsWith("select"))
                 {
 
                     DbDataReader reader = cmd.ExecuteReader();
-
+                   int columnCount =  reader.FieldCount;
+                     
+                  FillDataGrid( reader.GetSchemaTable(), resultGrid);
+                   
+                    for (int i=0; i<columnCount; i++)
+                    {
+                        reader.GetString(i);
+                    }
+                    
                     while (reader.Read()) {
-                        affectedRows++;
+                       
+                        
                     }
 
                     reader.Close();
-                        // https://stackoverflow.com/questions/3488962/how-to-create-a-dbdataadapter-given-a-dbcommand-or-dbconnection
-                    /*     adapter = DbProviderFactories.GetFactory(conn).CreateDataAdapter();
-
-                    
-
-                         adapter.SelectCommand = cmd;
-                         table = new DataTable();
-                         adapter.Fill(table);
-
-                         BindingSource bSource = new BindingSource();
-                         bSource.DataSource = table;
-                         resultGrid.DataSource = bSource;
-                         affectedRows = table.Rows.Count;*/
+                  
+                  
 
                 }
                 else
@@ -116,10 +121,32 @@ namespace MikypediaUWP
             }
 
         }
+
+
+        public static void FillDataGrid(DataTable table, DataGrid grid)
+        {
+            grid.Columns.Clear();
+            grid.AutoGenerateColumns = false;
+            for (int i = 0; i < table.Columns.Count; i++)
+            {
+                grid.Columns.Add(new DataGridTextColumn()
+                {
+                    Header = table.Columns[i].ColumnName,
+                    Binding = new Binding { Path = new PropertyPath("[" + i.ToString() + "]") }
+                });
+            }
+
+            var collection = new ObservableCollection<object>();
+            foreach (DataRow row in table.Rows)
+            {
+                collection.Add(row.ItemArray);
+            }
+
+            grid.ItemsSource = collection;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             String query = Query.Text;
-
             setResults(resultGrid, query);
         }
 
@@ -129,6 +156,16 @@ namespace MikypediaUWP
             /*    this.Hide();
                 DBConnectForm connectionForm = new DBConnectForm();*/
             //   connectionForm.Show();
+        }
+
+        private void tables_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void resultGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         /*  private void tables_CellDoubleClick(object sender, GridViewCellEventArgs e)

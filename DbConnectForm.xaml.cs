@@ -69,9 +69,7 @@ namespace MikypediaUWP
                 }
 
                 this.Frame.Navigate(typeof(MikyPediaSQLClient), dbConn);
-               /* 
-              Editor = new MikyPediaSQLClient(dbConn);
-                Editor.Show();*/
+            
             }
             catch (Exception exception)
             {
