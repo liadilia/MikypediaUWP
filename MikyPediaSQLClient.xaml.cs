@@ -78,21 +78,25 @@ namespace MikypediaUWP
             try
             {
 
-               
-
+     
                 int affectedRows = 0;
                 if (query.ToLower().StartsWith("select"))
                 {
+                    //https://stackoverflow.com/questions/18961938/populate-data-table-from-data-reader
+                    //https://stackoverflow.com/questions/53730207/how-to-fill-datagrid-with-datatable-content-in-uwp-c-sharp
 
                     DbDataReader reader = cmd.ExecuteReader();
+                   
+
                     DataTable dt = new DataTable();
                     dt.Load(reader);
+                    affectedRows = dt.Rows.Count;
+                   
                     System.Diagnostics.Debug.WriteLine(dt.ToString());
                     FillDataGrid(dt, resultGrid);
+                    while (reader.Read()) { affectedRows++; }
                     reader.Close();
-                  
-                  
-
+ 
                 }
                 else
                 {
