@@ -85,20 +85,10 @@ namespace MikypediaUWP
                 {
 
                     DbDataReader reader = cmd.ExecuteReader();
-                   int columnCount =  reader.FieldCount;
-                     
-                  FillDataGrid( reader.GetSchemaTable(), resultGrid);
-                   
-                    for (int i=0; i<columnCount; i++)
-                    {
-                        reader.GetString(i);
-                    }
-                    
-                    while (reader.Read()) {
-                       
-                        
-                    }
-
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    System.Diagnostics.Debug.WriteLine(dt.ToString());
+                    FillDataGrid(dt, resultGrid);
                     reader.Close();
                   
                   
