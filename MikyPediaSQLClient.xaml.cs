@@ -216,6 +216,17 @@ namespace MikypediaUWP
             Query.Text = "UPDATE table_name SET field1 = new-value1, field2 = new-value2 [WHERE Clause];";
         }
 
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Query.Text = " DELETE FROM table_name [WHERE Clause] ";
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Query.Text = "SELECT * FROM table_name [WHERE Clause]";
+        }
+
+
         /*  private void tables_CellDoubleClick(object sender, GridViewCellEventArgs e)
           {
               setResults(resultGrid, "SELECT * FROM " + ((GridView)sender).Rows[e.RowIndex].Cells[0].Value);
