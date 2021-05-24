@@ -60,6 +60,40 @@ namespace MikypediaUWP
 
             this.DBUrl.Text = conn.DataSource;
             this.DBName.Text = conn.Database;
+
+
+          //tables.Columns.Add("table", "Table");
+            DataTable schema = conn.GetSchema("Tables");
+
+
+
+            tablesGrid.Columns.Clear();
+            tablesGrid.AutoGenerateColumns = false;
+     /*       for (int i = 0; i < table.Columns.Count; i++)
+            {
+                grid.Columns.Add(new DataGridTextColumn()
+                {
+                    Header = table.Columns[i].ColumnName,
+                    Binding = new Binding { Path = new PropertyPath("[" + i.ToString() + "]") }
+                });
+            }*/
+
+            
+
+            tablesGrid.Columns.Add(new DataGridTextColumn()
+            {
+               Header = schema.Columns[2].ColumnName,
+               Binding = new Binding { Path = new PropertyPath("[]") }
+            });
+
+            var collection = new ObservableCollection<object>();
+            foreach (DataRow row in schema.Rows)
+            {
+                collection.Add(new List<String>() { row.ItemArray[2].ToString() });
+            }
+
+            tablesGrid.ItemsSource = collection;
+
             base.OnNavigatedTo(e);
         }
 
@@ -73,7 +107,7 @@ namespace MikypediaUWP
             cmd.CommandText = query;
             //
             logText.Text += ">" + query + Environment.NewLine;
-
+            DataTable dt = new DataTable();
 
             try
             {
@@ -88,18 +122,20 @@ namespace MikypediaUWP
                     DbDataReader reader = cmd.ExecuteReader();
                    
 
-                    DataTable dt = new DataTable();
+                    
                     dt.Load(reader);
                     affectedRows = dt.Rows.Count;
                    
                     System.Diagnostics.Debug.WriteLine(dt.ToString());
                     FillDataGrid(dt, resultGrid);
-                    while (reader.Read()) { affectedRows++; }
-                    reader.Close();
+                   // while (reader.Read()) { affectedRows++; }
+                    //reader.Close();
  
                 }
                 else
                 {
+                    dt.Clear();
+                    FillDataGrid(dt, resultGrid);
                     affectedRows = cmd.ExecuteNonQuery();
                 }
                 //prevText = logText.Text;
@@ -138,6 +174,7 @@ namespace MikypediaUWP
 
             grid.ItemsSource = collection;
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             String query = Query.Text;
@@ -147,6 +184,8 @@ namespace MikypediaUWP
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             this.conn.Close();
+            this.Frame.Navigate(typeof(MainPage));
+
             /*    this.Hide();
                 DBConnectForm connectionForm = new DBConnectForm();*/
             //   connectionForm.Show();
@@ -160,6 +199,21 @@ namespace MikypediaUWP
         private void resultGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void tablesGrid_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            setResults(resultGrid, "SELECT * FROM " + (((DataGrid)sender).SelectedItem as List<String>)[0]);
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Query.Text = "INSERT INTO /*tablename*/ (/*col*/) VALUES (/*val*/);";
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Query.Text = "UPDATE table_name SET field1 = new-value1, field2 = new-value2 [WHERE Clause];";
         }
 
         /*  private void tables_CellDoubleClick(object sender, GridViewCellEventArgs e)

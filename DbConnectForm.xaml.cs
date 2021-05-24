@@ -32,6 +32,7 @@ namespace MikypediaUWP
         public MainPage()
         {
             this.InitializeComponent();
+            setAuthentication();
         }
 
         private void FlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -101,21 +102,30 @@ namespace MikypediaUWP
         }
 
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void setAuthentication()
         {
-            if (DBType.Text == "MSSQL")
+            if (DBType.SelectedValue as String == "MSSQL")
             {
+                username.IsEnabled = !true;
+                password.IsEnabled = !true;
                 host.Text = "localhost";
                 name.Text = "lab1";
-                WAuth.IsChecked = true;
+                WAuth.IsEnabled = true;
+         
             }
-            else if (DBType.Text == "MySQL")
+            else if (DBType.SelectedValue as String == "MySQL")
             {
+                username.IsEnabled = true;
+                password.IsEnabled = true;
+                WAuth.IsEnabled = false;
                 WAuth.IsChecked = false;
-                host.Text = "";
-                name.Text = "";
-
             }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            setAuthentication();
         }
 
         private void TextBlock_SelectionChanged_1(object sender, RoutedEventArgs e)
