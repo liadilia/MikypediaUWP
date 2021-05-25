@@ -65,11 +65,15 @@ namespace MikypediaUWP
                 if (dbConn != null)
                 {
                     System.Diagnostics.Debug.WriteLine("It worked");
-                    var dialog = new MessageDialog("I am connected");
-                    
+                    this.Frame.Navigate(typeof(MikyPediaSQLClient), dbConn);
+
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("Could not connect");
                 }
 
-                this.Frame.Navigate(typeof(MikyPediaSQLClient), dbConn);
+              
             
             }
             catch (Exception exception)
@@ -110,8 +114,9 @@ namespace MikypediaUWP
                 username.IsEnabled = !true;
                 password.IsEnabled = !true;
                 host.Text = "localhost";
-                name.Text = "lab1";
+                name.Text = "mssqldb";
                 WAuth.IsEnabled = true;
+                WAuth.IsChecked = true;
          
             }
             else if (DBType.SelectedValue as String == "MySQL")

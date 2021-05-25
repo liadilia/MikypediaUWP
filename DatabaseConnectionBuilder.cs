@@ -100,7 +100,7 @@ namespace MikypediaUWP
 
             private DbConnection buildMSSQLConnection()
             {
-                SqlConnection cnn = null;
+                SqlConnection cnn = new SqlConnection();
                 if (host == null)
                 {
                     throw new Exception("missing hostname");
@@ -108,8 +108,9 @@ namespace MikypediaUWP
                 try
                 {
                     string connectionString;
-                    connectionString = @"Data Source=" + this.host + "; Initial Catalog=" + this.dbName + "; Integrated Security = True";
-                    cnn = new SqlConnection(connectionString);
+                    connectionString = @"Data Source=" + this.host + "; Initial Catalog=" + this.dbName + "; Integrated Security = true";
+                  //  cnn = new SqlConnection(connectionString);
+                cnn.ConnectionString = connectionString;
                     cnn.Open();
                 }
                 catch (SqlException ex)

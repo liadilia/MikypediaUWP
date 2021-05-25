@@ -57,13 +57,13 @@ namespace MikypediaUWP
         {
             
             this.conn = e.Parameter as DbConnection;
-
+            
             this.DBUrl.Text = conn.DataSource;
             this.DBName.Text = conn.Database;
 
 
           //tables.Columns.Add("table", "Table");
-            DataTable schema = conn.GetSchema("Tables");
+          DataTable schema = conn.GetSchema("Tables");
 
 
 
@@ -224,6 +224,11 @@ namespace MikypediaUWP
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             Query.Text = "SELECT * FROM table_name [WHERE Clause]";
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            Query.Text = "ALTER TABLE testalter_tbl ADD i INT AFTER c;";
         }
 
 
