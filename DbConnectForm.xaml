@@ -11,10 +11,10 @@
 
     <Grid>
         <Button Content="Connect" Margin="310,447,0,0" VerticalAlignment="Top" Click="Button_Click" Height="36" Width="148"/>
-        <TextBox HorizontalAlignment="Left" Margin="118,119,0,0" Name="host" Text="hosting2160545.online.pro" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="342"/>
-        <TextBox HorizontalAlignment="Left" Margin="119,173,0,0" Name="name" Text="00490502_lgdb" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.504,-4.507" Height="37" Width="341"/>
-        <TextBox HorizontalAlignment="Left" Margin="118,268,0,0" Name="username" Text="00490502_lgdb" TextWrapping="Wrap" VerticalAlignment="Top" Width="343"/>
-        <TextBox HorizontalAlignment="Left" Margin="118,329,0,0" Name="password" Text="00490502_lgdb" TextWrapping="Wrap" VerticalAlignment="Top" Width="343"/>
+        <TextBox HorizontalAlignment="Left" Margin="118,119,0,0" Name="host" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="342"/>
+        <TextBox HorizontalAlignment="Left" Margin="119,173,0,0" Name="name" Text="" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.504,-4.507" Height="37" Width="341"/>
+        <TextBox HorizontalAlignment="Left" Margin="118,268,0,0" Name="username" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="343"/>
+        <TextBox HorizontalAlignment="Left" Margin="118,329,0,0" Name="password" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="343"/>
         <TextBlock HorizontalAlignment="Left" Margin="34,123,0,0" Text="Hostname" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.492,3.332"/>
         <TextBlock HorizontalAlignment="Left" Margin="34,182,0,0" Text="DB name" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="35,241,0,240" Text="Authentication" TextWrapping="Wrap" RenderTransformOrigin="0.078,-0.621" FontWeight="Bold"/>
